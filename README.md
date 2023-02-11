@@ -50,7 +50,12 @@ Algoritma kNN dengan _hyperparameter_ `metric=manhattan` dan `n_neighbors=3` ada
 
 Model kNN yang digunakan memiliki score yang cukup baik pada data _training_. Pada data yang menggunakan semua 256 fitur channel energi, model kNN memiliki score pada data _training_ sebesar 0.99125.
 
-Begitu pula ketika dites untuk memprediksi kelas dari data _validation_ hasilnya cukup baik seperti berikut:
+Begitu pula ketika dites untuk memprediksi kelas dari data _validation_ hasilnya cukup baik. Meskipun masih terdapat 3 data yang sebenarnya adalah  `Na` namun diprediksi sebagai `Sr`. Hal itu kemungkinan karena fitur data pada kelas `Na` dan `Sr` memiliki sedikit kemiripan. Berikut adalah confusion matrix untuk hasil prediksi pada data _validation_:
 
 ![confusion matrix data validation](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_val.png)
 
+Jika melihat nilai _precision_, _recall_, _f1-score_ serta _accuracy_ pada data _validation_ didapat hasil yang sangat baik. _Precision_ sebesar 0.99, _recall_ sebesar 0.98_, _f1-score_ ataupun _accuracy_ sebesar 0.98.
+
+![score_validation](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_val.png)
+
+Hasil prediksi pada data tes juga menunjukkan hasil yang cukup baik
