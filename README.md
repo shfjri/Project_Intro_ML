@@ -13,7 +13,7 @@ Berdasarkan hal tersebut di atas, saya mencoba untuk mengimplementasikan algorit
 
 ## Related Work
 
-Pustaka khusus yang didedikasikan untuk mempelajari data spektroskopi gamma beresolusi tinggi telah tersedia [16]. Namun, metode ini tidak cukup baik ketika digunakan pada data gamma spektroskopi beresolusi rendah. Beberapa studi menunjukkan bahwa algoritma machine learning seperti neural network (NN) [15-16] dan support vector machine (SVM) [17] sangat efektif untuk mempelajari data spektroskopi gamma beresolusi rendah. Sementara pada penelitian lain sebuah Deep Neural Network digunakan untuk mengidentifikasi beberapa radioisotop dengan data hasil simulasi dan memiliki hasil yang dapat dikatakan _goodfit_ [T. Kin dkk].
+Pustaka khusus yang didedikasikan untuk mempelajari data spektroskopi gamma beresolusi tinggi telah tersedia [4]. Namun, metode ini tidak cukup baik ketika digunakan pada data gamma spektroskopi beresolusi rendah. Beberapa studi menunjukkan bahwa algoritma machine learning seperti neural network (NN) [3-4] dan support vector machine (SVM) [17] sangat efektif untuk mempelajari data spektroskopi gamma beresolusi rendah. Sementara pada penelitian lain sebuah Deep Neural Network digunakan untuk mengidentifikasi beberapa radioisotop dengan data hasil simulasi dan memiliki hasil yang dapat dikatakan _goodfit_ [T. Kin dkk].
 
 Penelitian-penelitian tersebut menggunakan data spektroskopi gamma dengan resolusi yang cukup tinggi. Pada penelitian [T. Kin dkk] menggunakan data dengan 4096 channel (nilai energi), penelitian [15-16] menggunakan data dengan 1024 channel. Sementara data spektroskopi gamma yang saya gunakan hanya 256 channel. Dengan perbedaan tersebut, menarik untuk melihat apakah data spektroskopi gamma resolusi rendah dengan 256 channel dapat dipelajar dengan baik oleh algoritma machine learning yang sederhana seperti kNN untuk mengklasifikasi radioisotopnya.
 
@@ -83,5 +83,21 @@ Dengan hasil yang lebih baik jika melakukan `PCA` pada data, maka waktu komputas
 
 ![scatter_plot_pc1_pc3](https://github.com/shfjri/Project_Intro_ML/blob/master/images/scatter_pc1_pc3.png)
 
-Dapat dilihat bahwa dengan _principal component 1_ (_PC1_) dan _principal component 3_ (_PC3_), data-data tiap kelas dapat dibedakan dengan cukup baik. Meskipun terlihat antara `Na` (Na<sub>22</sub>) dan `Sr` (Sr<sub>90</sub>) terdapat data-data yang berdekatan, punya fitur _PC1_ dan _PC3_ yang mirip.
+Dapat dilihat bahwa dengan _principal component 1_ (_PC1_) dan _principal component 3_ (_PC3_), data-data tiap kelas dapat dibedakan dengan cukup baik. Meskipun terlihat antara `Na` (Na<sub>22</sub>), `Am` (Am<sub>241</sub>) dan `Sr` (Sr<sub>90</sub>) terdapat data-data yang berdekatan, punya fitur _PC1_ dan _PC3_ yang mirip.
 
+## Conclusion
+
+Berdasarkan _score_ pada data _training_, _validation_ dan _test_, baik yang menggunakan semua fitur data atau yang diterapkan `PCA` memiliki nilai yang cukup tinggi di semau set data, algoritma kNN dapat dikatakan __goodfit__ untuk melakukan klasifikasi radioisotop dengan input data berupa data spektroskopi gamma resolusi rendah. Mengingat juga algoritma kNN ini hanya mengandalkan memori untuk mengingat tetangga-tetangga terdekat dalam menentukan kelas dari sebuah data, dengan model yang sangat sederhana ini permasalahan klasifikasi radioisotop berdasarkan data spektroskopi gamma resolusi rendah dapat dilakukan.
+Hal ini bisa saja menjadi pemantik untuk mencoba algoritma kNN untuk melakukan hal yang sama namun pada data spektroskopi gamma resolusi tinggi.
+
+## References
+
+<ul> [1] T.Cover and P. Hart, “Nearest neighbor pattern classification,” IEEE Trans. Inf. Theory, vol. 13, no. 1, pp. 21–27, 1967. </ul>
+<ul> [2] S. Zhang, “Cost-sensitive KNN classification,” Neurocomputing, vol. 391, pp. 234–242, 2020. </ul>
+<ul> [3] M. Kamuda and C. J. Sullivan, “An automated isotope identification and quantification algorithm for isotope mixtures in low-resolution gamma-ray spectra,” Radiat. Phys. Chem., vol. 155, no. June 2018,
+pp. 281–286, 2019. </ul>
+<ul> [4] M. Kamuda, J. Zhao, and K. Huff, “A comparison of machine learning methods for automated gamma-ray spectroscopy,” Nucl. Instruments Methods Phys. Res. Sect. A Accel. Spectrometers, Detect.
+Assoc. Equip., vol. 954, no. October, 2020. </ul>
+<ul> [5] H. Hata, K. Yokoyama, Y. Ishimori, Y. Ohara, Y. Tanaka, and N. Sugitsue, “Application of support vector machine to rapid classification of uranium waste drums using low-resolution γ-ray spectra,”
+Appl. Radiat. Isot., vol. 104, pp. 143–146, 2015. </ul>
+<ul> [6] T. Kin, J. Goto and M. Oshima, "Machine learning approach for gamma-ray spectra identification for radioactivity analysis," IEEE Nuclear Science Symposium and Medical Imaging Conference (NSS/MIC), 2019. </ul>
