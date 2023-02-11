@@ -78,3 +78,10 @@ Berikut adalah _confusion matrix_ dan _score_ _metric-metric_ tersebut:
 
 ![confusion_matrix_test_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_test_pca.png)
 ![score_test_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_test_pca.png)
+
+Dengan hasil yang lebih baik jika melakukan `PCA` pada data, maka waktu komputasi bisa dihemat, dimensi data bisa jauh berkurang dan akan lebih mudah untuk memvisualisasikan hubungan antar fitur. Berikut adalah contoh hubungan antar fitur _principal component_ yang bisa membedakan tiap-tiap kelas dengan cukup baik:
+
+![scatter_plot_pc1_pc3](https://github.com/shfjri/Project_Intro_ML/blob/master/images/scatter_pc1_pc3.png)
+
+Dapat dilihat bahwa dengan _principal component 1_ (_PC1_) dan _principal component 3_ (_PC3_), data-data tiap kelas dapat dibedakan dengan cukup baik. Meskipun terlihat antara `Na` (Na<sub>22</sub>) dan `Sr` (Sr<sub>90</sub>) terdapat data-data yang berdekatan, punya fitur _PC1_ dan _PC3_ yang mirip.
+
