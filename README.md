@@ -52,10 +52,14 @@ Model kNN yang digunakan memiliki score yang cukup baik pada data _training_. Pa
 
 Begitu pula ketika dites untuk memprediksi kelas dari data _validation_ hasilnya cukup baik. Meskipun masih terdapat 3 data yang sebenarnya adalah  `Na` namun diprediksi sebagai `Sr`. Hal itu kemungkinan karena fitur data pada kelas `Na` dan `Sr` memiliki sedikit kemiripan. Berikut adalah confusion matrix untuk hasil prediksi pada data _validation_:
 
-![confusion matrix data validation](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_val.png)
+![confusion matrix validation](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_val.png)
 
 Jika melihat nilai _precision_, _recall_, _f1-score_ serta _accuracy_ pada data _validation_ didapat hasil yang sangat baik. _Precision_ sebesar 0.99, _recall_ sebesar 0.98_, _f1-score_ ataupun _accuracy_ sebesar 0.98.
 
 ![score_validation](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_val.png)
 
-Hasil prediksi pada data tes juga menunjukkan hasil yang cukup baik
+Hasil prediksi pada data _test_ juga menunjukkan hasil yang cukup baik seperti pada data _validation_ meskipun data _test_ ini berbeda waktu cacahannya dibandingkan dengan data _training_ dan _validation_. Hasil prediksi dan _score_ pada data _test_ dapat dilihat sebagai berikut:
+
+![confusion_matrix_test](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_test.png)
+![score_test](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_test.png)
+
