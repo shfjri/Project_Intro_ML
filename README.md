@@ -63,3 +63,18 @@ Hasil prediksi pada data _test_ juga menunjukkan hasil yang cukup baik seperti p
 ![confusion_matrix_test](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_test.png)
 ![score_test](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_test.png)
 
+Terdapat 2 data yang salah diprediksi yaitu 1 data yang sebenarnya adalah `Co` namun diprediksi sebagai `Sr` dan 1 data `Na` yang diprediksi sebagai `Sr`. Sementara nilai _precision_, _recall_, _f1-score_ dan _accuracy_ pada data test ini adalah 0.98 untuk _metric-metric_ tersebut.
+
+Melihat hasil tersebut yang menggunakan semua fitur data, mungkin akan berbeda hasilnya jika hanya menggunakan beberapa fitur data saja hasil `PCA`. `PCA` dilakukan pada data _training_, _validation_ dan _test_ dengan hanya akan menggunakan 4 _principal component_ saja sebagai input. Untuk data yang diterapkan `PCA` ini dilakukan hal yang sama dalam mencari model kNN terbaik untuk data hasil `PCA` tersebut. Kemudian setelah didapatkan model kNN dengan _hyperparameters_ terbaik, model digunakan untuk memprediksi kelas pada data _validation_ dan _test_ hasil `PCA`.
+_Score_ model kNN untuk data _train_ hasil `PCA` memiliki nilai yang lebih tinggi dibanding data _train_ dengan semua fitur, yaitu 1.0.
+
+Jika dilihat pada _confusion matrix_ di bawah ini, terlihat bahwa ada perbaikan hasil prediksi pada data _validation_ yang diterapkan `PCA`. Tidak ada data yang salah diprediksi. Ini akan menghasilkan nilai _precision_, _recall_, _f1-score_ dan _accuracy_ yang lebih tinggi. Semua _metric_ tersebut memiliki nilai sebesar 1.0.
+
+![confusion_matrix_val_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_val_pca.png)
+![score_val_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_val_pca.png)
+
+Ketika model memprediksi data _test_ yang diterapkan `PCA`, hasilnya tidak sebaik seperti pada data _validation_ di atas. Terdapat 1 data yang sebenarnya adalah `Co` namun diprediksi sebagai `Sr`. Namun ini masih lebih baik dibandingkan dengan data _test_ yang menggunakan semua fitur data. Begitu pula untuk nilai _precison_, _recall_, _f1-score_ dan _accuracy_ nya sebesar 0.99.
+Berikut adalah _confusion matrix_ dan _score_ _metric-metric_ tersebut:
+
+![confusion_matrix_test_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_test_pca.png)
+![score_test_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_test_pca.png)
