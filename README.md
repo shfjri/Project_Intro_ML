@@ -88,7 +88,7 @@ Dapat dilihat bahwa dengan _principal component 1_ (_PC1_) dan _principal compon
 ## Conclusion
 
 Berdasarkan _score_ pada data _training_, _validation_ dan _test_, baik yang menggunakan semua fitur data atau yang diterapkan `PCA` memiliki nilai yang cukup tinggi di semau set data, algoritma kNN dapat dikatakan __goodfit__ untuk melakukan klasifikasi radioisotop dengan input data berupa data spektroskopi gamma resolusi rendah. Mengingat juga algoritma kNN ini hanya mengandalkan memori untuk mengingat tetangga-tetangga terdekat dalam menentukan kelas dari sebuah data, dengan model yang sangat sederhana ini permasalahan klasifikasi radioisotop berdasarkan data spektroskopi gamma resolusi rendah dapat dilakukan.
-Hal ini bisa saja menjadi pemantik untuk mencoba algoritma kNN untuk melakukan hal yang sama namun pada data spektroskopi gamma resolusi tinggi.
+Hal ini diharapkan menjadi pemantik untuk mencoba algoritma kNN untuk melakukan hal yang sama namun pada data spektroskopi gamma resolusi tinggi.
 
 ## References
 
