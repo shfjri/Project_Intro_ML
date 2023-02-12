@@ -13,9 +13,9 @@ Berdasarkan hal tersebut di atas, saya mencoba untuk mengimplementasikan algorit
 
 ## Related Work
 
-Pustaka khusus yang didedikasikan untuk mempelajari data spektroskopi gamma beresolusi tinggi telah tersedia [4]. Namun, metode ini tidak cukup baik ketika digunakan pada data gamma spektroskopi beresolusi rendah. Beberapa studi menunjukkan bahwa algoritma machine learning seperti neural network (NN) [3-4] dan support vector machine (SVM) [17] sangat efektif untuk mempelajari data spektroskopi gamma beresolusi rendah. Sementara pada penelitian lain sebuah Deep Neural Network digunakan untuk mengidentifikasi beberapa radioisotop dengan data hasil simulasi dan memiliki hasil yang dapat dikatakan _goodfit_ [T. Kin dkk].
+Pustaka khusus yang didedikasikan untuk mempelajari data spektroskopi gamma beresolusi tinggi telah tersedia [4]. Namun, metode ini tidak cukup baik ketika digunakan pada data gamma spektroskopi beresolusi rendah. Beberapa studi menunjukkan bahwa algoritma machine learning seperti neural network (NN) [3-4] dan support vector machine (SVM) [5] sangat efektif untuk mempelajari data spektroskopi gamma beresolusi rendah. Sementara pada penelitian lain sebuah Deep Neural Network digunakan untuk mengidentifikasi beberapa radioisotop dengan data hasil simulasi dan memiliki hasil yang dapat dikatakan _goodfit_ [6].
 
-Penelitian-penelitian tersebut menggunakan data spektroskopi gamma dengan resolusi yang cukup tinggi. Pada penelitian [T. Kin dkk] menggunakan data dengan 4096 channel (nilai energi), penelitian [15-16] menggunakan data dengan 1024 channel. Sementara data spektroskopi gamma yang saya gunakan hanya 256 channel. Dengan perbedaan tersebut, menarik untuk melihat apakah data spektroskopi gamma resolusi rendah dengan 256 channel dapat dipelajar dengan baik oleh algoritma machine learning yang sederhana seperti kNN untuk mengklasifikasi radioisotopnya.
+Penelitian-penelitian tersebut menggunakan data spektroskopi gamma dengan resolusi yang cukup tinggi. Pada penelitian [6] menggunakan data dengan 4096 channel (nilai energi), penelitian [3-4] menggunakan data dengan 1024 channel. Sementara data spektroskopi gamma yang saya gunakan hanya 256 channel. Dengan perbedaan tersebut, menarik untuk melihat apakah data spektroskopi gamma resolusi rendah dengan 256 channel dapat dipelajar dengan baik oleh algoritma machine learning yang sederhana seperti kNN untuk mengklasifikasi radioisotopnya.
 
 ## Dataset and Features
 
@@ -50,7 +50,7 @@ Algoritma kNN dengan _hyperparameter_ `metric=manhattan` dan `n_neighbors=3` ada
 
 Model kNN yang digunakan memiliki score yang cukup baik pada data _training_. Pada data yang menggunakan semua 256 fitur channel energi, model kNN memiliki score pada data _training_ sebesar 0.99125.
 
-Begitu pula ketika dites untuk memprediksi kelas dari data _validation_ hasilnya cukup baik. Meskipun masih terdapat 3 data yang sebenarnya adalah  `Na` namun diprediksi sebagai `Sr`. Hal itu kemungkinan karena fitur data pada kelas `Na` dan `Sr` memiliki sedikit kemiripan. Berikut adalah confusion matrix untuk hasil prediksi pada data _validation_:
+Begitu pula ketika dites untuk memprediksi kelas dari data _validation_ hasilnya cukup baik. Meskipun masih terdapat 3 data yang sebenarnya adalah  `Na` (Na<sub>22</sub>) namun diprediksi sebagai `Sr` (Sr<sub>90</sub>). Hal itu kemungkinan karena fitur data pada kelas `Na` (Na<sub>22</sub>) dan `Sr` (Sr<sub>90</sub>) memiliki sedikit kemiripan. Berikut adalah confusion matrix untuk hasil prediksi pada data _validation_:
 
 ![confusion matrix validation](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_val.png)
 
@@ -63,7 +63,7 @@ Hasil prediksi pada data _test_ juga menunjukkan hasil yang cukup baik seperti p
 ![confusion_matrix_test](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_test.png)
 ![score_test](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_test.png)
 
-Terdapat 2 data yang salah diprediksi yaitu 1 data yang sebenarnya adalah `Co` namun diprediksi sebagai `Sr` dan 1 data `Na` yang diprediksi sebagai `Sr`. Sementara nilai _precision_, _recall_, _f1-score_ dan _accuracy_ pada data test ini adalah 0.98 untuk _metric-metric_ tersebut.
+Terdapat 2 data yang salah diprediksi yaitu 1 data yang sebenarnya adalah `Co` (Co<sub>60</sub>) namun diprediksi sebagai `Sr` (Sr<sub>90</sub>) dan 1 data `Na` (Na<sub>22</sub>) yang diprediksi sebagai `Sr` (Sr<sub>90</sub>). Sementara nilai _precision_, _recall_, _f1-score_ dan _accuracy_ pada data test ini adalah 0.98 untuk _metric-metric_ tersebut.
 
 Melihat hasil tersebut yang menggunakan semua fitur data, mungkin akan berbeda hasilnya jika hanya menggunakan beberapa fitur data saja hasil `PCA`. `PCA` dilakukan pada data _training_, _validation_ dan _test_ dengan hanya akan menggunakan 4 _principal component_ saja sebagai input. Untuk data yang diterapkan `PCA` ini dilakukan hal yang sama dalam mencari model kNN terbaik untuk data hasil `PCA` tersebut. Kemudian setelah didapatkan model kNN dengan _hyperparameters_ terbaik, model digunakan untuk memprediksi kelas pada data _validation_ dan _test_ hasil `PCA`.
 _Score_ model kNN untuk data _train_ hasil `PCA` memiliki nilai yang lebih tinggi dibanding data _train_ dengan semua fitur, yaitu 1.0.
@@ -73,7 +73,7 @@ Jika dilihat pada _confusion matrix_ di bawah ini, terlihat bahwa ada perbaikan 
 ![confusion_matrix_val_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_val_pca.png)
 ![score_val_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/score_val_pca.png)
 
-Ketika model memprediksi data _test_ yang diterapkan `PCA`, hasilnya tidak sebaik seperti pada data _validation_ di atas. Terdapat 1 data yang sebenarnya adalah `Co` namun diprediksi sebagai `Sr`. Namun ini masih lebih baik dibandingkan dengan data _test_ yang menggunakan semua fitur data. Begitu pula untuk nilai _precison_, _recall_, _f1-score_ dan _accuracy_ nya sebesar 0.99.
+Ketika model memprediksi data _test_ yang diterapkan `PCA`, hasilnya tidak sebaik seperti pada data _validation_ di atas. Terdapat 1 data yang sebenarnya adalah `Co` (Co<sub>60</sub>) diprediksi sebagai `Sr` (Sr<sub>90</sub>). Namun ini masih lebih baik dibandingkan dengan data _test_ yang menggunakan semua fitur data. Begitu pula untuk nilai _precison_, _recall_, _f1-score_ dan _accuracy_ nya sebesar 0.99.
 Berikut adalah _confusion matrix_ dan _score_ _metric-metric_ tersebut:
 
 ![confusion_matrix_test_pca](https://github.com/shfjri/Project_Intro_ML/blob/master/images/conf_matrix_test_pca.png)
