@@ -30,7 +30,7 @@ Dataset yang digunkanan terdiri dari _training_ dan _validation_ dengan total da
 
 Pada dataset, dilakukan scaling dengan `StandardScaler` dari `scikit-learn` dan juga diterapkan `Principal Component Analysis` (`PCA`) untuk mereduksi dimensi dari data. `PCA` sendiri dilakukan untuk membandingkan performa kNN apakah dengan fitur yang lebih sedikit, performa kNN akan lebih buruk, sama atau lebih baik daripada menggunakan semua 256 fitur data.
 
-## Metode
+## Method
 
 Seperti yang sudah disebutkan di atas, metode atau algoritma yang digunakan untuk mengklasifikasi radioisotop dengan data spektroskopi gamma rendah adalah kNN. kNN menggunakan konsep jarak untuk mencari tetangga-tetangga terdekat dari sebuah input data. Untuk menghitung jarak ke tiap tetangga, bisa menggunakan beberapa jenis jarak seperti `Manhattan`, `Euclidean` dan `Minkowski`.
 Berikut adalah perbedaan dari ketiga jenis jarak tersebut:
